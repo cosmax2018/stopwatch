@@ -107,7 +107,7 @@ def main():
                 terminate()
                 
             elif catch_event_space(event) or catch_event_button_pressed(event) == BUTTON_RED_PRESSED:
-                draw_buttons((GREEN,BRIGHT_RED))
+                draw_buttons()
                 pygame.display.update()
                 go_to_pause()
             
