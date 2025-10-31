@@ -1,8 +1,8 @@
 
 #
-#   stopwatch.py : StopWatch Timer in Python 
+#   stopwatch.py : StopWatch Timer written in Python 
 #
-#   (c)2020-25 by @_°° Lumachina Software
+#   MIT License - (c)2020-25 by @_°° Lumachina Software
 #
 #   Massimiliano Cosmelli (massimiliano.cosmelli@gmail.com)
 #
@@ -12,20 +12,26 @@ from fonts import Fonts
 import pygame, os, sys, time, datetime
 from pygame.locals import *
 
-BLACK,WHITE,RED,GREEN,BRIGHT_RED,BRIGHT_GREEN,BLUE = (0,0,0),(255,255,255),(150,0,0),(0,150,0),(255,0,0),(0,255,0),(0,0,255)
+BLACK,WHITE,RED,GREEN,BRIGHT_RED,BRIGHT_GREEN,BLUE =    (0,0,0),
+                                                        (255,255,255),
+                                                        (150,0,0),
+                                                        (0,150,0),
+                                                        (255,0,0),
+                                                        (0,255,0),
+                                                        (0,0,255)
 GO_BUTTON_COLOR,STOP_BUTTON_COLOR = BRIGHT_GREEN,RED
 
 X,Y = 0,1
 BUTTON_RED_PRESSED, BUTTON_GREEN_PRESSED = 0,1
 
 pygame.init()
-pygame.display.set_caption('Stopwatch (c)2020 by @_°°  Lumachina SW ')
-fps = pygame.time.Clock()                      # frames/second
+pygame.display.set_caption('Stopwatch (c)2020-25 by @_°°  Lumachina SW ')
+fps = pygame.time.Clock()   # frames/second
 screen = pygame.display.set_mode((400,110))
 background = pygame.Surface(screen.get_size())
 background = background.convert()
 background.fill(BLUE)
-txtfonts = Fonts('C:/Users/ITMACOS/stopwatch/fonts/',(40,50))
+txtfonts = Fonts(os.getcwd()+"/fonts/",(40,50))
 fps_rate = 1
 			
 def terminate():
@@ -56,7 +62,7 @@ def catch_event_button_pressed(event):
                 return BUTTON_RED_PRESSED
         
 def update_time(actual_time):
-    # aggiorna il tempo passato nel formato hh:mm:ss
+    # update the elapsed time in hh:mm:ss format
     hh,mm,ss = actual_time
     ss = (ss + 1)%61
     if ss == 60:
@@ -68,7 +74,7 @@ def update_time(actual_time):
     return (hh,mm,ss)
 
 def go_to_pause():
-    print('entrato in pausa alle ' + datetime.datetime.now().strftime('%H:%M:%S'))
+    print('Went on break at ' + datetime.datetime.now().strftime('%H:%M:%S'))
     attendere = True
     while attendere:
         for event in pygame.event.get():
@@ -77,7 +83,7 @@ def go_to_pause():
             elif catch_event_space(event) or catch_event_button_pressed(event) == BUTTON_GREEN_PRESSED:
                 draw_buttons()
                 pygame.display.update()
-                print('uscito dalla pausa alle ' + datetime.datetime.now().strftime('%H:%M:%S'))
+                print('Came back from break at ' + datetime.datetime.now().strftime('%H:%M:%S'))
                 attendere = False
                 
 def draw_buttons():
@@ -101,7 +107,7 @@ def main():
 
     while True:
         
-        # gestione degli eventi
+        # events management
         for event in pygame.event.get():
             if catch_event_quit(event):
                 terminate()
@@ -111,7 +117,7 @@ def main():
                 pygame.display.update()
                 go_to_pause()
             
-        # gestione del timer
+        # timer management
         if time.time()-t0 > 0.99:
             t0 = time.time()
             actual_time = update_time(actual_time)
