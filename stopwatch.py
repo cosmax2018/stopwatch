@@ -12,12 +12,12 @@ from fonts import Fonts
 import pygame, os, sys, time, datetime
 from pygame.locals import *
 
-BLACK,WHITE,RED,GREEN,BRIGHT_RED,BRIGHT_GREEN,BLUE =    (0,0,0),
-                                                        (255,255,255),
-                                                        (150,0,0),
-                                                        (0,150,0),
-                                                        (255,0,0),
-                                                        (0,255,0),
+BLACK,WHITE,RED,GREEN,BRIGHT_RED,BRIGHT_GREEN,BLUE =    (0,0,0),        \
+                                                        (255,255,255),  \
+                                                        (150,0,0),      \
+                                                        (0,150,0),      \
+                                                        (255,0,0),      \
+                                                        (0,255,0),      \
                                                         (0,0,255)
 GO_BUTTON_COLOR,STOP_BUTTON_COLOR = BRIGHT_GREEN,RED
 
