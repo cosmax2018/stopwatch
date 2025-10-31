@@ -1,0 +1,5 @@
+# ignora il file .bat
+avvio_stopwatch.bat
+
+# ignora cartella
+__pycache__
